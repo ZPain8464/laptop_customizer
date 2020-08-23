@@ -6,23 +6,24 @@ const USCurrencyFormat = new Intl.NumberFormat('en-US', {
     currency: 'USD'
   });
 
+
+  // Rewrite as a fucntional component 
 class Cart extends Component {
     render() {
         const summary = Object.keys(this.props.cartItems).map((feature, idx) => {
             const featureHash = feature + '-' + idx;
             const selectedOption = this.props.cartItems[feature];
-            console.log(this.props.updateFeature)
+            console.log(this.props.updateValue)
       
             return (
-            <section className="main__summary">
-                <div className="summary__option" key={featureHash}>
-                <div className="summary__option__label">{feature} </div>
-                <div className="summary__option__value">{selectedOption.name}</div>
-                <div className="summary__option__cost">
-                {USCurrencyFormat.format(selectedOption.cost)}
-                </div>
-                </div>
-            </section>
+                <section className="main__summary"> 
+                <div className="summary__option" key={featureHash}> 
+                <div className="summary__option__label" key={this.props.cartItems.Display.name}>{feature} </div> 
+                <div className="summary__option__value" key={this.props.cartItems['Operating System'].name}>{selectedOption.name}</div> 
+                <div className="summary__option__cost" key={this.props.cartItems.Display.cost}> 
+                {USCurrencyFormat.format(selectedOption.cost)} </div> 
+                </div> 
+                </section>
             );
           });
         return (
@@ -39,3 +40,5 @@ class Cart extends Component {
 }
 
 export default Cart; 
+
+

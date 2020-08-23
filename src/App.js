@@ -60,7 +60,7 @@ class App extends Component {
           updateFeature={this.updateFeature}/>
           <Cart 
           cartItems={this.state.selected}
-          updateVale={this.updateFeature}/>
+          updateValue={this.updateFeature}/>
         </main>
       </div>
     );

@@ -19,7 +19,7 @@ class FormOptions extends Component {
                     className="feature__option"
                     name={slugify(feature)}
                     checked={item.name === this.props.selectedItems[feature].name}
-                    onChange={() => this.props.updateFeature()}
+                    onChange={(e) => this.props.updateFeature(this.props.selectedItems[feature].name, item, e)}
                     
                     
                   />
