@@ -11,6 +11,7 @@ class Cart extends Component {
         const summary = Object.keys(this.props.cartItems).map((feature, idx) => {
             const featureHash = feature + '-' + idx;
             const selectedOption = this.props.cartItems[feature];
+            console.log(this.props.updateFeature)
       
             return (
             <section className="main__summary">

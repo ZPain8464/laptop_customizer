@@ -48,21 +48,6 @@ class App extends Component {
 
   render() {
 
-    const summary = Object.keys(this.state.selected).map((feature, idx) => {
-      const featureHash = feature + '-' + idx;
-      const selectedOption = this.state.selected[feature];
-
-      return (
-        <div className="summary__option" key={featureHash}>
-          <div className="summary__option__label">{feature} </div>
-          <div className="summary__option__value">{selectedOption.name}</div>
-          <div className="summary__option__cost">
-            {USCurrencyFormat.format(selectedOption.cost)}
-          </div>
-        </div>
-      );
-    });
-
     return (
       <div className="App">
         <header>
@@ -72,9 +57,10 @@ class App extends Component {
           <MainForm 
           selectedItems={this.state.selected}
           features={this.props.features}
-          updateFeature={newValue => this.updateFeature(newValue)}/>
+          updateFeature={this.updateFeature}/>
           <Cart 
-          cartItems={this.state.selected}/>
+          cartItems={this.state.selected}
+          updateVale={this.updateFeature}/>
         </main>
       </div>
     );

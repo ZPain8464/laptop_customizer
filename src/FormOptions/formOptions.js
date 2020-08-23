@@ -8,7 +8,6 @@ const USCurrencyFormat = new Intl.NumberFormat('en-US', {
 
 class FormOptions extends Component {
     render() {
-        console.log(this.props.selectedItems)
         const feature = this.props.feature
         const options = this.props.featureOptions[feature].map(item => {
             const itemHash = slugify(JSON.stringify(item));
@@ -20,7 +19,7 @@ class FormOptions extends Component {
                     className="feature__option"
                     name={slugify(feature)}
                     checked={item.name === this.props.selectedItems[feature].name}
-                    onChange={e => this.updateFeature(e.target.value)}
+                    onChange={() => this.props.updateFeature()}
                     
                     
                   />

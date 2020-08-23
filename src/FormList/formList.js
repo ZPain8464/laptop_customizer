@@ -3,10 +3,8 @@ import FormOptions from '../FormOptions/formOptions';
 
 class FormList extends Component {
     render() {
-        console.log(this.state)
         const features = Object.keys(this.props.featureItems).map((feature, idx) => {
             const featureHash = feature + '-' + idx;
-            console.log(this.state)
             return (
                 <fieldset className="feature" key={featureHash}>
                 <legend className="feature__name">
