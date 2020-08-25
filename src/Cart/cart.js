@@ -10,29 +10,30 @@ const USCurrencyFormat = new Intl.NumberFormat('en-US', {
   // Rewrite as a fucntional component 
 class Cart extends Component {
     render() {
-        const summary = Object.keys(this.props.cartItems).map((feature, idx) => {
+        const summary = Object.keys(this.props.selected).map((feature, idx) => {
             const featureHash = feature + '-' + idx;
-            const selectedOption = this.props.cartItems[feature];
-            console.log(this.props.updateValue)
+            const selectedOption = this.props.selected[feature];
+
       
             return (
-                <section className="main__summary"> 
+                
                 <div className="summary__option" key={featureHash}> 
-                <div className="summary__option__label" key={this.props.cartItems.Display.name}>{feature} </div> 
-                <div className="summary__option__value" key={this.props.cartItems['Operating System'].name}>{selectedOption.name}</div> 
-                <div className="summary__option__cost" key={this.props.cartItems.Display.cost}> 
+                <div className="summary__option__label">{feature} </div> 
+                <div className="summary__option__value">{selectedOption.name}</div> 
+                <div className="summary__option__cost" key={this.props.selected.Display.cost}> 
                 {USCurrencyFormat.format(selectedOption.cost)} </div> 
                 </div> 
-                </section>
             );
           });
         return (
             <>
             <div>
-                <h2>Your cart</h2>
-                {summary}
-                <CartTotal 
-                total={this.props.cartItems}/>
+                <section className="main__summary"> 
+                    <h2>Your cart</h2>
+                    {summary}
+                    <CartTotal 
+                    {...this.props}/>
+                </section>
             </div>
             </>
         )

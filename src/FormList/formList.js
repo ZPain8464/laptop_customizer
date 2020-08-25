@@ -3,7 +3,8 @@ import FormOptions from '../FormOptions/formOptions';
 
 class FormList extends Component {
     render() {
-        const features = Object.keys(this.props.featureItems).map((feature, idx) => {
+        const {features={}} = this.props;
+        const featuresRender = Object.keys(features).map((feature, idx) => {
             const featureHash = feature + '-' + idx;
             return (
                 <fieldset className="feature" key={featureHash}>
@@ -11,10 +12,9 @@ class FormList extends Component {
                     <h3>{feature}</h3>
                 </legend>
                 <FormOptions 
-                updateFeature={this.props.updateFeature}
-                selectedItems={this.props.selectedItems}
+                {...this.props}
                 feature={feature}
-                featureOptions={this.props.featureItems}/>
+                />
                 </fieldset>
             )
             });
@@ -22,7 +22,7 @@ class FormList extends Component {
         return (
             <>
             <div>
-                {features}
+                {featuresRender}
             </div>
             </>
         )
