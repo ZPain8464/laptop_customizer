@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import FEATURES from '../Features/Features';
 import slugify from 'slugify';
 
 const USCurrencyFormat = new Intl.NumberFormat('en-US', {
@@ -9,9 +10,8 @@ const USCurrencyFormat = new Intl.NumberFormat('en-US', {
 class FormOptions extends Component {
     render() {
         const feature = this.props.feature
-        const options = this.props.features[feature].map(item => {
+        const options = FEATURES[feature].map(item => {
             const itemHash = slugify(JSON.stringify(item));
-            console.log(this.props.selected[feature])
             return (
                 <div key={itemHash} className="feature__item">
                   <input
@@ -21,8 +21,6 @@ class FormOptions extends Component {
                     name={slugify(feature)}
                     checked={item.name === this.props.selected[feature].name}
                     onChange={(e) => this.props.updateFeature(feature, item, e)}
-                    
-                    
                   />
                   <label htmlFor={itemHash} className="feature__label">
                     {item.name} ({USCurrencyFormat.format(item.cost)})
@@ -39,5 +37,3 @@ class FormOptions extends Component {
 }
 
 export default FormOptions;
-// checked={item.name === this.props.selectedItems[feature].name}
-// onChange={e => this.props.updateFeature(e.target.value)}

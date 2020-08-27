@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import MainForm from './MainForm/mainForm';
-import Cart from './Cart/cart';
+import MainSummary from './MainSummary/MainSummary';
+import Header from './Header/Header';
+
 
 import './App.css';
+
 
 class App extends Component {
   state = {
@@ -35,20 +38,15 @@ class App extends Component {
   };
 
   render() {
-
     return (
       <div className="App">
-        <header>
-          <h1>ELF Computing | Laptops</h1>
-        </header>
+        <Header />
         <main>
           <MainForm 
           {...this.state}
-          {...this.props}
           updateFeature={this.updateFeature}/>
-          <Cart 
-          {...this.state}
-          />
+          <MainSummary 
+          {...this.state}/>
         </main>
       </div>
     );

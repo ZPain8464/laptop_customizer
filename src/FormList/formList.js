@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import FEATURES from '../Features/Features';
 import FormOptions from '../FormOptions/formOptions';
 
 class FormList extends Component {
     render() {
-        const {features={}} = this.props;
-        const featuresRender = Object.keys(features).map((feature, idx) => {
+        const featuresRender = Object.keys(FEATURES).map((feature, idx) => {
             const featureHash = feature + '-' + idx;
             return (
                 <fieldset className="feature" key={featureHash}>
